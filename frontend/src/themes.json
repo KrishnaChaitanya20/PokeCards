@@ -1,0 +1,20 @@
+{
+    "electric": "#FFFF00",
+    "water": "#0000FF",
+    "fire": "#FF0000",
+    "grass": "#00FF00",
+    "ice": "#00FFFF",
+    "fighting": "#FF0000",
+    "poison": "#800080",
+    "ground": "#8B4513",
+    "flying": "#87CEEB",
+    "psychic": "#FF69B4",
+    "bug": "#008000",
+    "rock": "#A9A9A9",
+    "ghost": "#4B0082",
+    "dragon": "#0000FF",
+    "dark": "#000000",
+    "steel": "#C0C0C0",
+    "fairy": "#FF69B4",
+    "normal": "#FFFFFF"
+}
