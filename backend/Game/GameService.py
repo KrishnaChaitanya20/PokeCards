@@ -16,17 +16,17 @@ schema for object in queue
 schema for game object
 {
     "game_id": uuid,
-    "player1": string,
-    "player1_cards": list,
+    "player1": "string",
+    "player1_cards": list[card],
     "onfield1": card,
 
-    "player2": string, 
-    "player2_cards": list,
+    "player2": "string", 
+    "player2_cards": list[card],
     "onfield2": card,
 
     "turn": int,
     "timeout": int,
-    "status": string
+    "status": "string"
 }
 '''
 
@@ -35,25 +35,14 @@ game_service = Blueprint('game_service', __name__)
 types = ['normal','fire', 'water','grass', 'flying','fighting','poison','ground','rock','bug','ghost','electric','psychic','ice','dragon','dark','steel','fairy']
 timeout=20
 attack_multiplier = {
-    ('water', 'fire'): 1.75,
-    ('fire', 'grass'): 1.75,
-    ('grass', 'water'): 1.5,
-    ('normal','fire'): 1.25,
-    ('normal','water'): 1.25,
-    ('normal','grass'): 1.25,
-    ('flying','fighting'): 1.5,
-    ('fighting','poison'): 1.5,
-    ('poison','ground'): 1.5,
-    ('ground','rock'): 1.5,
-    ('rock','bug'): 1.5,
-    ('bug','ghost'): 1.5,
-    ('ghost','electric'): 1.5,
-    ('electric','psychic'): 1.5,
-    ('psychic','ice'): 1.5,
-    ('ice','dragon'): 1.5,
-    ('dragon','dark'): 1.5,
-    ('dark','steel'): 1.5,
-    ('steel','fairy'): 1.5
+    ('water', 'fire'): 2,
+    ('water','grass'): 0.5,
+    ('fire','water'): 0.5,
+    ('fire','grass'): 2,
+    ('grass','fire'): 0.5,
+    ('grass','water'): 2,
+    ('electric','water'): 2,
+    ('electric','ground'): 0.5    
 }
 
 def get_multiplier(attacker, defender):
