@@ -1,4 +1,5 @@
 from flask import Flask, jsonify
+from flask_cors import CORS
 from database import mongo,redis
 from Card.CardService import card_service
 from User.UserService import user_service
@@ -8,6 +9,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
+CORS(app)
 app.config["MONGO_URI"]=os.environ.get('MONGO_URI')
 mongo.init_app(app)
 app.config["REDIS_URL"]=os.environ.get('REDIS_URL')

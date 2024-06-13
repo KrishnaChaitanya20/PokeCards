@@ -1,7 +1,9 @@
 import React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 import PageCard from '../components/PageCard'
 import '../styles/HomePage.css'
+import PCNavBar from 'components/PCNavBar'
 
 const HomePage = () => {
   const cardspageprop={
@@ -25,14 +27,19 @@ const HomePage = () => {
 
   return (
     <>
+        <PCNavBar/>
         <Container className='my-auto'>
           <Row style={{ justifyContent: 'space-around' }}>
               <Col {...Colsprops}>
-                <PageCard props={cardspageprop} />
+                <Link to='/cards'>
+                  <PageCard props={cardspageprop} />
+                </Link>
               </Col>
+
               <Col {...Colsprops}>
                 <PageCard props={matchpageprop} />
               </Col>
+              
               <Col {...Colsprops}>
                 <PageCard props={unknownpageprops} />
               </Col>

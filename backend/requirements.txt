@@ -3,3 +3,4 @@ Flask-PyMongo==2.3.0
 flask-redis==0.4.0
 python-dotenv==1.0.1
 waitress==3.0.0
+flask_cors==4.0.1
