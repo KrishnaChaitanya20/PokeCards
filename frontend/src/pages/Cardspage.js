@@ -1,6 +1,7 @@
 import PCNavBar from 'components/PCNavBar'
 import PokeCard from 'components/PokeCard';
 import React, { useEffect,useState } from 'react'
+import { Container, Row,Col } from 'react-bootstrap';
 
 const Cardspage = () => {
   const [cards,setCards] = useState([]);
@@ -12,14 +13,31 @@ const Cardspage = () => {
       setCards(data);
     });
   }, []);
+
+  const grid={
+      xs:6,
+      sm:4,
+      md:4,
+      lg:3,
+
+  }
+
   return (
     <>
       <PCNavBar/>
-      {
-        cards.map((card,index) => (
-          <PokeCard key={index} card={card}/>
-        ))
-      }
+      <Container>
+        <Row>
+          {
+            cards.map((card,index) => (
+              <Col {...grid}>
+                <PokeCard key={index} card={card}/>
+              </Col>
+            ))
+          }
+        </Row>
+      </Container>
+
+      
     </>
   )
 }

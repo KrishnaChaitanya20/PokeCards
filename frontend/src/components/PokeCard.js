@@ -1,6 +1,5 @@
 import React from 'react'
-import { Container, Row,Col } from 'react-bootstrap';
-import { Card, Button,CardImgOverlay } from 'react-bootstrap';
+import { Card } from 'react-bootstrap';
 import theme from '../themes';
 
 const PokeCard = ({ card }) => {
@@ -13,9 +12,6 @@ return (
 				<Card.Body className='mt-2 mb-2'>
 					<Card.Title>{card.name}</Card.Title>
 					<Card.Subtitle style={{ color: theme[card.type] }}>{card.type}</Card.Subtitle>
-					<Card.Text>
-						{card.description}
-					</Card.Text>
 				</Card.Body>
 			</Card>
 		</Card>
