@@ -9,8 +9,8 @@ def is_admin():
     data = request.get_json()
     admin = mongo.db.admins.find_one({'username':data['username'],'password': data['password']})
     if admin:
-        return jsonify({'message': 'success'})
-    return jsonify({'message': 'Admin not found'})
+        return jsonify({'message': 'success','status':200})
+    return jsonify({'message': 'Admin not found','status':404})
 
 @admin_service.route('/admin', methods=['POST'])
 def create_admin():
