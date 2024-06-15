@@ -6,7 +6,8 @@ import { Container, Row,Col } from 'react-bootstrap';
 const Cardspage = () => {
   const [cards,setCards] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/cards')
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
+    fetch(BASE_URL+'/cards')
     .then(response => response.json())
     .then(data => {
       console.log(data);
