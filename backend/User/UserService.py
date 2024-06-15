@@ -42,6 +42,15 @@ def get_users():
         response.append(user)
     return jsonify(response)
 
+@user_service.route('/isuser', methods=['POST'])
+def is_user():
+    data = request.get_json()
+    user = mongo.db.users.find_one({'name':data['username'],'password': data['password']})
+    if user:
+        return jsonify({'message': 'success'})
+    return jsonify({'message': 'User not found'})
+
+
 @user_service.route('/user/<user_id>', methods=['GET'])
 def get_user(user_id):
     user = mongo.db.users.find_one({'_id': ObjectId(user_id)})

@@ -4,6 +4,7 @@ from database import mongo,redis
 from Card.CardService import card_service
 from User.UserService import user_service
 from Game.GameService import game_service
+from Admin.AdminService import admin_service
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -20,6 +21,7 @@ redis.init_app(app)
 app.register_blueprint(card_service)
 app.register_blueprint(user_service)
 app.register_blueprint(game_service)
+app.register_blueprint(admin_service)
 
 @app.route('/', methods=['GET'])
 def home():
