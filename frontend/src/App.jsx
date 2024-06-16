@@ -1,15 +1,16 @@
-// frontend/src/App.jsx
-import "styles/App.css"
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "pages/HomePage";
 import Cardspage from "pages/Cardspage";
 import MatchPage from "pages/MatchPage";
-import LoginPage from "pages/LoginPage"; // Assuming you have a LoginPage
-import AdminDashboard from "pages/AdminDashboard"; // Assuming you have an AdminDashboard
-import { useLogin } from "./LoginContext"; // Import useLogin
+import LoginPage from "pages/LoginPage";
+import AdminLoginPage from "pages/AdminLoginPage";
+import AdminDashboard from "pages/AdminDashboard";
+import { useAdminLogin } from "./AdminLoginContext";
+import { useLogin } from "./LoginContext"; 
 
 function App() {
-  const { isLoggedIn } = useLogin(); // Use the login context
+  const { isLoggedIn } = useLogin(); 
+  const { isAdmin } = useAdminLogin();
 
   const router = createBrowserRouter([
     {
@@ -22,15 +23,18 @@ function App() {
     },
     {
       path: "/match",
-      element: isLoggedIn ? <MatchPage /> : <LoginPage />
+      element: isLoggedIn ? <MatchPage /> : <LoginPage to="/match"/>
     },
     {
       path: "/admin",
-      element: <AdminDashboard />
+      element: isAdmin ? <AdminDashboard /> : <AdminLoginPage to="/admin"/>
     },
     {
       path: "/login",
       element: <LoginPage />
+    },{
+      path: "/adminlogin",
+      element: <AdminLoginPage />
     }
   ]);
 
